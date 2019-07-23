@@ -1,0 +1,232 @@
+======================================================
+说明：
+先在用“容器base”创建两个容器，然后docker exec -it pgs-v1 bash进入容器；
+然后cd ~进入家目录，在主postgresql上运行pgsm.sh脚本；
+然后在从postgresql上运行pgss.sh脚本。
+最后，创建数据库以及表，插入数据，测试主从是否正常。
+
+======================================================
+容器base:
+
+cat pgs2.sh
+#!/bin/bash
+
+# Create for mai
+ # Copyright http://www.mairoot.com
+ # Create date 2018-07-21
+ # Using check host source
+ # Noting delete content
+ # Shell Option $@
+
+# 00.概述
+ # docker下创建postgresql容器
+ # 18.06.0-ce, ubuntu.16.04, postgresql-9.6
+
+# 01. 下载一个镜像
+down_image() {
+docker images|grep ubuntu|grep 16.04
+if [[ $? -ne 0 ]] ;then
+docker pull ubuntu:16.04
+fi
+}
+
+# 02. 制作一个镜像
+create_dockerfile() {
+cat > dockerfile << EOF
+FROM ubuntu:16.04
+RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak
+RUN echo "deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list
+RUN echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list              
+RUN echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list
+RUN echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list
+RUN echo "deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list
+RUN echo "deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list
+RUN echo "deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list
+RUN echo "deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
+RUN apt-get update && apt-get -y install locales
+RUN locale-gen en_US.UTF-8
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+RUN apt-get update && apt-get install -y vim wget
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add
+RUN apt-get update && apt-get install -y postgresql-9.6
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+RUN apt-get install inetutils-ping net-tools -y
+CMD ["/bin/bash"]
+USER postgres
+RUN cd /var/lib/postgresql
+RUN sh -c '/etc/init.d/postgresql restart'
+EOF
+docker build --no-cache -t pgs:v3 .
+}
+
+# 03.运行容器 
+docker_run() {
+docker run -it --name pgs-v1 -d pgs:v1
+docker run -it --name pgs-v2 -d pgs:v1
+}
+
+# 10.调用函数
+main() {
+down_image
+create_dockerfile
+docker_run
+}
+main
+
+
+
+===================================
+master:
+
+
+$ cat pgsm.sh 
+#!/bin/bash
+
+# Create for mai
+ # Copyright http://www.mairoot.com
+ # Create date 2018-07-21
+ # Using check host source
+ # Noting delete content
+ # Shell Option $@
+
+# 00.概述
+ # docker下创建postgresql容器
+ # 18.06.0-ce, ubuntu.16.04, postgresql-9.6
+ # 主master
+
+# 01.修改配置
+/etc/init.d/postgresql restart
+if [[ $? -eq 0 ]];then
+echo "postgresql restart Successful!"
+fi
+grep -ri "^listen_addresses" /etc/postgresql/9.6/main/postgresql.conf
+if [[ $? -ne 0 ]];then
+sed -i "/#listen_addresses/alisten_addresses = '*'" /etc/postgresql/9.6/main/postgresql.conf
+fi
+grep -ri "^wal_level = hot_standby" /etc/postgresql/9.6/main/postgresql.conf
+if [[ $? -ne 0 ]];then
+sed -i "/wal_level =/awal_level = hot_standby" /etc/postgresql/9.6/main/postgresql.conf
+fi
+grep -ri "^max_wal_senders = 8" /etc/postgresql/9.6/main/postgresql.conf
+if [[ $? -ne 0 ]];then
+sed -i "/max_wal_senders =/amax_wal_senders = 8" /etc/postgresql/9.6/main/postgresql.conf
+fi
+grep -ri "^hot_standby = on" /etc/postgresql/9.6/main/postgresql.conf
+if [[ $? -ne 0 ]];then
+sed -i '/hot_standby = off/ahot_standby = on' /etc/postgresql/9.6/main/postgresql.conf
+fi
+sed -i "s/max_connections.*/max_connections=1000/g" /etc/postgresql/9.6/main/postgresql.conf
+
+# 02.配置允许从连接
+IP_eth0=`ip a|grep eth0|grep inet|awk '{print $2}'|awk -F'/' '{print $1}'|awk 'BEGIN{FS=OFS="."}{$NF+=1;print}'`
+grep -ir 'host replication' /etc/postgresql/9.6/main/pg_hba.conf
+if [[ $? -ne 0 ]];then
+sed -i "\$ahost replication repl $IP_eth0/32 md5" /etc/postgresql/9.6/main/pg_hba.conf
+fi
+
+# 03.创建账号
+psql -c "\du"|grep repl
+if [[ $? -ne 0 ]];then
+psql -c "create role repl login replication encrypted password '123456';"
+fi
+
+# 04.重启postgresql
+/etc/init.d/postgresql restart
+if [[ $? -eq 0 ]];then
+echo "postgresql restart Successful!"
+fi
+ps -ef |grep post|grep sender|grep -v grep
+if [[ $? -eq 0 ]];then
+echo "postgresql Master start Successful!"
+else
+echo "postgresql Master start Faild!"
+fi
+
+
+===================================
+slase:
+
+$ cat pgss.sh 
+#!/bin/bash
+
+# Create for mai
+ # Copyright http://www.mairoot.com
+ # Create date 2018-07-21
+ # Using check host source
+ # Noting delete content
+ # Shell Option $@
+
+# 00.概述
+ # docker下创建postgresql容器
+ # 18.06.0-ce, ubuntu.16.04, postgresql-9.6
+ # 从slave
+
+# 01.修改配置
+/etc/init.d/postgresql restart
+if [[ $? -eq 0 ]];then
+echo "postgresql restart Successful!"
+fi
+grep -ri "^listen_addresses" /etc/postgresql/9.6/main/postgresql.conf
+if [[ $? -ne 0 ]];then
+sed -i "/#listen_addresses/alisten_addresses = '*'" /etc/postgresql/9.6/main/postgresql.conf
+fi
+grep -ri "^hot_standby = on" /etc/postgresql/9.6/main/postgresql.conf
+if [[ $? -ne 0 ]];then
+sed -i '/hot_standby = off/ahot_standby = on' /etc/postgresql/9.6/main/postgresql.conf
+fi
+grep -ri "^wal_level = hot_standby" /etc/postgresql/9.6/main/postgresql.conf
+if [[ $? -ne 0 ]];then
+sed -i "/wal_level =/awal_level = hot_standby" /etc/postgresql/9.6/main/postgresql.conf
+fi
+grep -ri "^max_wal_senders = 8" /etc/postgresql/9.6/main/postgresql.conf
+if [[ $? -ne 0 ]];then
+sed -i "/max_wal_senders =/amax_wal_senders = 8" /etc/postgresql/9.6/main/postgresql.conf
+fi
+sed -i "s/max_connections.*/max_connections=1000/g" /etc/postgresql/9.6/main/postgresql.conf
+IP_eth0=`ip a|grep eth0|grep inet|awk '{print $2}'|awk -F'/' '{print $1}'|awk 'BEGIN{FS=OFS="."}{$NF+=-1;print}'`
+#grep -ir 'host replication' /etc/postgresql/9.6/main/pg_hba.conf
+#if [[ $? -ne 0 ]];then
+#sed -i "\$ahost replication repl $IP_eth0 md5" /etc/postgresql/9.6/main/pg_hba.conf
+#fi
+
+# 02.同步主数据
+rm -rf /var/lib/postgresql/9.6/main/*
+pg_basebackup -h$IP_eth0 -p5432 -Urepl -F p -P -D /var/lib/postgresql/9.6/main/
+
+# 03.配置从配置
+cp /usr/share/postgresql/9.6/recovery.conf.sample /var/lib/postgresql/9.6/main/recovery.conf
+grep -ri "^standby_mode" /var/lib/postgresql/9.6/main/recovery.conf
+if [[ $? -ne 0 ]];then
+sed -i "/standby_mode = off/astandby_mode = on" /var/lib/postgresql/9.6/main/recovery.conf
+fi
+grep -ri "primary_conninfo = 'host=.*'" /var/lib/postgresql/9.6/main/recovery.conf
+if [[ $? -ne 0 ]];then
+sed -i "/primary_conninfo = ''/aprimary_conninfo = 'host=$IP_eth0 port=5432 user=repl password=123456'" /var/lib/postgresql/9.6/main/recovery.conf
+fi
+grep -ri "^trigger_file.*" /var/lib/postgresql/9.6/main/recovery.conf
+if [[ $? -ne 0 ]];then
+sed -i "/trigger_file = ''/atrigger_file = '/var/lib/postgresql/9.6/main/trigger_activestandby'" /var/lib/postgresql/9.6/main/recovery.conf
+fi
+
+# 04.重启postgresql
+/etc/init.d/postgresql restart
+if [[ $? -eq 0 ]];then
+echo "postgresql restart Successful!"
+fi
+ps -ef |grep post|grep recovering|grep -v grep
+if [[ $? -eq 0 ]];then
+echo "postgresql Slave start Successful!"
+else
+echo "postgresql Slave start Faild!"
+fi
+
+
+
+
+
+
+
+
+
+

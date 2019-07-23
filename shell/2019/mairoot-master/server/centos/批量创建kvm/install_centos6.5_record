@@ -1,0 +1,1110 @@
+
+[root@h ~]# virt-install --name=test --ram=512 --vcpus=1 --disk /var/lib/libvirt/images/test.img,size=8,format=qcow2 --location /iso/CentOS-6.5-x86_64-bin-DVD1.iso -w bridge:br0,model=virtio -w network=default --force --autostart --extra-args="text console=tty0 console=ttyS0,115200"
+
+Starting install...
+Retrieving file .treeinfo...                             |  676 B     00:00 ... 
+Retrieving file vmlinuz...                               | 7.9 MB     00:00 ... 
+Retrieving file initrd.img...                            |  64 MB     00:03 ... 
+Allocating 'test.img'                                    | 8.0 GB     00:00     
+Creating domain...                                       |    0 B     00:00     
+Connected to domain test
+Escape character is ^]
+
+
+
+
+
+
+
+
+
+
+
+Google, Inc.
+Serial Graphics Adapter 12/07/11
+SGABIOS $Id: sgabios.S 8 2010-04-22 00:03:40Z nlaredo $ (mockbuild@c6b18n1.dev.centos.org) Wed Dec  7 17:04:47 UTC 2011
+Term: 80x24
+4 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SeaBIOS (version seabios-0.6.1.2-28.el6)
+Machine UUID be6b7833-dad1-d4c1-25b1-b219415a8142
+
+
+gPXE (http://etherboot.org) - 00:03.0 C100 PCI2.10 PnP BBS PMM1FE0@10 C100
+                                                                               
+
+
+
+gPXE (http://etherboot.org) - 00:04.0 C180 PCI2.10 PnP BBS PMM1FC0@20 C180
+                                                                               
+
+Probing EDD (edd=off to disable)... ok
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Initializing cgroup subsys cpuset
+Initializing cgroup subsys cpu
+Linux version 2.6.32-431.el6.x86_64 (mockbuild@c6b8.bsys.dev.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Fri Nov 22 03:15:09 UTC 2013
+Command line:  text console=tty0 console=ttyS0,115200
+KERNEL supported cpus:
+  Intel GenuineIntel
+  AMD AuthenticAMD
+  Centaur CentaurHauls
+Disabled fast string operations
+BIOS-provided physical RAM map:
+ BIOS-e820: 0000000000000000 - 000000000009d800 (usable)
+ BIOS-e820: 000000000009d800 - 00000000000a0000 (reserved)
+ BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+ BIOS-e820: 0000000000100000 - 000000001fffd000 (usable)
+ BIOS-e820: 000000001fffd000 - 0000000020000000 (reserved)
+ BIOS-e820: 00000000fffbc000 - 0000000100000000 (reserved)
+DMI 2.4 present.
+SMBIOS version 2.4 @ 0xFDA20
+Hypervisor detected: KVM
+last_pfn = 0x1fffd max_arch_pfn = 0x400000000
+PAT not supported by CPU.
+init_memory_mapping: 0000000000000000-000000001fffd000
+RAMDISK: 1e019000 - 1ffef4ff
+ACPI: RSDP 00000000000fd9f0 00014 (v00 BOCHS )
+ACPI: RSDT 000000001fffd670 00034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+ACPI: FACP 000000001ffffe40 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+ACPI: DSDT 000000001fffd950 024A2 (v01   BXPC   BXDSDT 00000001 INTL 20090123)
+ACPI: FACS 000000001ffffe00 00040
+ACPI: SSDT 000000001fffd8b0 0009E (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+ACPI: APIC 000000001fffd7c0 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+ACPI: SSDT 000000001fffd6b0 0010F (v01   BXPC BXSSDTPC 00000001 INTL 20090123)
+Setting APIC routing to flat.
+No NUMA configuration found
+Faking a node at 0000000000000000-000000001fffd000
+Bootmem setup node 0 0000000000000000-000000001fffd000
+  NODE_DATA [0000000000009000 - 000000000003cfff]
+  bootmap [000000000003d000 -  0000000000040fff] pages 4
+(7 early reservations) ==> bootmem [0000000000 - 001fffd000]
+  #0 [0000000000 - 0000001000]   BIOS data page ==> [0000000000 - 0000001000]
+  #1 [0000006000 - 0000008000]       TRAMPOLINE ==> [0000006000 - 0000008000]
+  #2 [0001000000 - 000201faa4]    TEXT DATA BSS ==> [0001000000 - 000201faa4]
+  #3 [001e019000 - 001ffef4ff]          RAMDISK ==> [001e019000 - 001ffef4ff]
+  #4 [000009d800 - 0000100000]    BIOS reserved ==> [000009d800 - 0000100000]
+  #5 [0002020000 - 0002020081]              BRK ==> [0002020000 - 0002020081]
+  #6 [0000008000 - 0000009000]          PGTABLE ==> [0000008000 - 0000009000]
+found SMP MP-table at [ffff8800000fda40] fda40
+kvm-clock: Using msrs 4b564d01 and 4b564d00
+kvm-clock: cpu 0, msr 0:1c247c1, boot clock
+Zone PFN ranges:
+  DMA      0x00000001 -> 0x00001000
+  DMA32    0x00001000 -> 0x00100000
+  Normal   0x00100000 -> 0x00100000
+Movable zone start PFN for each node
+early_node_map[2] active PFN ranges
+    0: 0x00000001 -> 0x0000009d
+    0: 0x00000100 -> 0x0001fffd
+ACPI: PM-Timer IO Port: 0xb008
+Setting APIC routing to flat.
+ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Using ACPI (MADT) for SMP configuration information
+SMP: Allowing 1 CPUs, 0 hotplug CPUs
+PM: Registered nosave memory: 000000000009d000 - 000000000009e000
+PM: Registered nosave memory: 000000000009e000 - 00000000000a0000
+PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+Allocating PCI resources starting at 20000000 (gap: 20000000:dffbc000)
+Booting paravirtualized kernel on KVM
+NR_CPUS:4096 nr_cpumask_bits:1 nr_cpu_ids:1 nr_node_ids:1
+PERCPU: Embedded 31 pages/cpu @ffff880002200000 s94872 r8192 d23912 u2097152
+pcpu-alloc: s94872 r8192 d23912 u2097152 alloc=1*2097152
+pcpu-alloc: [0] 0 
+kvm-clock: cpu 0, msr 0:22167c1, primary cpu clock
+kvm-stealtime: cpu 0, msr 220e880
+Built 1 zonelists in Node order, mobility grouping on.  Total pages: 129075
+Policy zone: DMA32
+Kernel command line:  text console=tty0 console=ttyS0,115200
+PID hash table entries: 2048 (order: 2, 16384 bytes)
+Checking aperture...
+No AGP bridge found
+Memory: 465956k/524276k available (5325k kernel code, 400k absent, 57920k reserved, 7013k data, 1276k init)
+Hierarchical RCU implementation.
+NR_IRQS:33024 nr_irqs:256
+Console: colour dummy device 80x25
+console [tty0] enabled
+console [ttyS0] enabled
+allocated 2097152 bytes of page_cgroup
+please try 'cgroup_disable=memory' option if you don't want memory cgroups
+Detected 2494.274 MHz processor.
+Calibrating delay loop (skipped) preset value.. 4988.54 BogoMIPS (lpj=2494274)
+pid_max: default: 32768 minimum: 301
+Security Framework initialized
+SELinux:  Initializing.
+Dentry cache hash table entries: 65536 (order: 7, 524288 bytes)
+Inode-cache hash table entries: 32768 (order: 6, 262144 bytes)
+Mount-cache hash table entries: 256
+Initializing cgroup subsys ns
+Initializing cgroup subsys cpuacct
+Initializing cgroup subsys memory
+Initializing cgroup subsys devices
+Initializing cgroup subsys freezer
+Initializing cgroup subsys net_cls
+Initializing cgroup subsys blkio
+Initializing cgroup subsys perf_event
+Initializing cgroup subsys net_prio
+Disabled fast string operations
+mce: CPU supports 10 MCE banks
+alternatives: switching to unfair spinlock
+SMP alternatives: switching to UP code
+Freeing SMP alternatives: 36k freed
+ACPI: Core revision 20090903
+ftrace: converting mcount calls to 0f 1f 44 00 00
+ftrace: allocating 21769 entries in 86 pages
+APIC routing finalized to flat.
+..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+CPU0: Intel QEMU Virtual CPU version (cpu64-rhel6) stepping 03
+APIC calibration not consistent with PM-Timer: 221ms instead of 100ms
+APIC delta adjusted to PM-Timer: 6270534 (13907240)
+Performance Events: Broken PMU hardware detected, using software events only.
+NMI watchdog disabled (cpu0): hardware events not enabled
+Brought up 1 CPUs
+Total of 1 processors activated (4988.54 BogoMIPS).
+devtmpfs: initialized
+regulator: core version 0.5
+NET: Registered protocol family 16
+ACPI: bus type pci registered
+PCI: Using configuration type 1 for base access
+bio: create slab <bio-0> at 0
+ACPI: Interpreter enabled
+ACPI: (supports S0 S5)
+ACPI: Using IOAPIC for interrupt routing
+ACPI: No dock devices found.
+PCI: Ignoring host bridge windows from ACPI; if necessary, use "pci=use_crs" and report a bug
+ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+PCI host bridge to bus 0000:00
+pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+pci_bus 0000:00: root bus resource [mem 0x00000000-0xffffffffff]
+pci 0000:00:01.3: quirk: [io  0xb000-0xb03f] claimed by PIIX4 ACPI
+pci 0000:00:01.3: quirk: [io  0xb100-0xb10f] claimed by PIIX4 SMB
+ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+ACPI: PCI Interrupt Link [LNKS] (IRQs *9)
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+PCI: Using ACPI for IRQ routing
+lo: Dropping TSO features since no CSUM feature.
+NetLabel: Initializing
+NetLabel:  domain hash size = 128
+NetLabel:  protocols = UNLABELED CIPSOv4
+NetLabel:  unlabeled traffic allowed by default
+Switching to clocksource kvm-clock
+pnp: PnP ACPI init
+ACPI: bus type pnp registered
+pnp: PnP ACPI: found 6 devices
+ACPI: ACPI bus type pnp unregistered
+NET: Registered protocol family 2
+IP route cache hash table entries: 4096 (order: 3, 32768 bytes)
+TCP established hash table entries: 16384 (order: 6, 262144 bytes)
+TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+TCP: Hash tables configured (established 16384 bind 16384)
+TCP reno registered
+NET: Registered protocol family 1
+pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+pci 0000:00:01.0: PIIX3: Enabling Passive Release
+pci 0000:00:01.0: Activating ISA DMA hang workarounds
+ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+pci 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+pci 0000:00:01.2: PCI INT D disabled
+Trying to unpack rootfs image as initramfs...
+Freeing initrd memory: 32601k freed
+audit: initializing netlink socket (disabled)
+type=2000 audit(1511867829.517:1): initialized
+HugeTLB registered 2 MB page size, pre-allocated 0 pages
+VFS: Disk quotas dquot_6.5.2
+Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+msgmni has been set to 973
+alg: No test for stdrng (krng)
+ksign: Installing public key data
+Loading keyring
+- Added public key 8A44323FB303E068
+- User ID: CentOS (Kernel Module GPG key)
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+io scheduler noop registered
+io scheduler anticipatory registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+acpiphp: Slot [1] registered
+acpiphp: Slot [2] registered
+acpiphp: Slot [3] registered
+acpiphp: Slot [4] registered
+acpiphp: Slot [5] registered
+acpiphp: Slot [6] registered
+acpiphp: Slot [7] registered
+acpiphp: Slot [8] registered
+acpiphp: Slot [9] registered
+acpiphp: Slot [10] registered
+acpiphp: Slot [11] registered
+acpiphp: Slot [12] registered
+acpiphp: Slot [13] registered
+acpiphp: Slot [14] registered
+acpiphp: Slot [15] registered
+acpiphp: Slot [16] registered
+acpiphp: Slot [17] registered
+acpiphp: Slot [18] registered
+acpiphp: Slot [19] registered
+acpiphp: Slot [20] registered
+acpiphp: Slot [21] registered
+acpiphp: Slot [22] registered
+acpiphp: Slot [23] registered
+acpiphp: Slot [24] registered
+acpiphp: Slot [25] registered
+acpiphp: Slot [26] registered
+acpiphp: Slot [27] registered
+acpiphp: Slot [28] registered
+acpiphp: Slot [29] registered
+acpiphp: Slot [30] registered
+acpiphp: Slot [31] registered
+ipmi message handler version 39.2
+IPMI System Interface driver.
+ipmi_si: Adding default-specified kcs state machine
+ipmi_si: Trying default-specified kcs state machine at i/o address 0xca2, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Adding default-specified smic state machine
+ipmi_si: Trying default-specified smic state machine at i/o address 0xca9, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Adding default-specified bt state machine
+ipmi_si: Trying default-specified bt state machine at i/o address 0xe4, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Unable to find any System Interface(s)
+input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+ACPI: Power Button [PWRF]
+ACPI Exception: AE_NOT_FOUND, No or invalid critical threshold (20090903/thermal-386)
+GHES: HEST is not enabled!
+Non-volatile memory driver v1.3
+Linux agpgart interface v0.103
+crash memory driver: version 1.1
+Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+?serial8250: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+00:05: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+brd: module loaded
+loop: module loaded
+input: Macintosh mouse button emulation as /devices/virtual/input/input1
+Fixed MDIO Bus: probed
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+uhci_hcd: USB Universal Host Controller Interface driver
+uhci_hcd 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+uhci_hcd 0000:00:01.2: UHCI Host Controller
+uhci_hcd 0000:00:01.2: new USB bus registered, assigned bus number 1
+uhci_hcd 0000:00:01.2: irq 11, io base 0x0000c020
+usb usb1: New USB device found, idVendor=1d6b, idProduct=0001
+usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb1: Product: UHCI Host Controller
+usb usb1: Manufacturer: Linux 2.6.32-431.el6.x86_64 uhci_hcd
+usb usb1: SerialNumber: 0000:00:01.2
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 2 ports detected
+PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+serio: i8042 KBD port at 0x60,0x64 irq 1
+serio: i8042 AUX port at 0x60,0x64 irq 12
+mice: PS/2 mouse device common for all mice
+rtc_cmos 00:01: RTC can wake from S4
+rtc_cmos 00:01: rtc core: registered rtc_cmos as rtc0
+usb 1-1: new full speed USB device number 2 using uhci_hcd
+rtc0: alarms up to one day, 114 bytes nvram
+cpuidle: using governor ladder
+cpuidle: using governor menu
+EFI Variables Facility v0.08 2004-May-17
+usbcore: registered new interface driver hiddev
+usbcore: registered new interface driver usbhid
+usbhid: v2.6:USB HID core driver
+GRE over IPv4 demultiplexor driver
+usb 1-1: New USB device found, idVendor=0627, idProduct=0001
+usb 1-1: New USB device strings: Mfr=1, Product=3, SerialNumber=5
+usb 1-1: Product: QEMU USB Tablet
+usb 1-1: Manufacturer: QEMU 0.12.1
+Welcome to CentOS for x86_64
+                    │  America/Montserrat              ?  │                     
+                    │  America/Nassau                  ?  │                     
+                    │  America/New York                ?  │
+                    │  America/Nipigon                 ?  │
+                    │  America/Nome                    ?  │
+                    │  America/Noronha                 ?  │
+                    │  America/North Dakota/Beulah     ?  │
+                    │  America/North Dakota/Center     ?  │
+                    │  America/North Dakota/New Salem  ?  │
+                    │  America/Ojinaga                 ?  │
+                    │  America/Panama                  ?  │
+                    │  America/Pangnirtung             ?  │
+                    │  America/Paramaribo              ?  │
+                    │  America/Phoenix                 ?  │
+                    │  America/Port of Spain           ?  │
+                    │  America/Port-au-Prince          ?  │
+                    │  America/Porto Velho             ?  │
+                    │  America/Puerto Rico             ?  │
+                    │  America/Rainy River             ?  │
+                    │  America/Rankin Inlet            ?  │
+                    │  America/Recife                  ?  │
+                    │  America/Regina                  ?  │
+                    │  America/Resolute                ?  │
+                    │  America/Rio Branco              ?  │
+                    │  America/Santa Isabel            ?  │
+                    │  America/Santarem                ?  │
+                    │  America/Santiago                ?  │
+                    │  America/Santo Domingo           ?  │
+                    │  America/Sao Paulo               ?  │
+                    │  America/Scoresbysund            ?  │
+                    │  America/Sitka                   ?  │
+                    │  America/St Barthelemy           ?  │
+                    │  America/Rio Branco              ?  │
+                    │  America/Santa Isabel            ?  │
+                    │  America/Santarem                ?  │
+                    │  America/Santiago                ?  │
+                    │  America/Santo Domingo           ?  │
+                    │  America/Sao Paulo               ?  │
+                    │  America/Scoresbysund            ?  │
+                    │  America/Sitka                   ?  │
+                    │  America/St Barthelemy           ?  │
+                    │  America/St Johns                ?  │
+                    │  America/St Kitts                ?  │
+                    │  America/St Lucia                ?  │
+                    │  America/St Thomas               ?  │
+                    │  America/St Vincent              ?  │
+                    │  America/Swift Current           ?  │
+                    │  America/Tegucigalpa             ?  │
+                    │  America/Thule                   ?  │
+                    │  America/Thunder Bay             ?  │
+                    │  America/Tijuana                 ?  │
+                    │  America/Toronto                 ?  │
+                    │  America/Tortola                 ?  │
+                    │  America/Vancouver               ?  │
+                    │  America/Whitehorse              ?  │
+                    │  America/Winnipeg                ?  │
+                    │  America/Yakutat                 ?  │
+                    │  America/Yellowknife             ?  │
+                    │  Antarctica/Casey                ?  │
+                    │  Antarctica/Davis                ?  │
+                    │  Antarctica/DumontDUrville       ?  │
+                    │  Antarctica/Macquarie            ?  │
+                    │  Antarctica/Mawson               ?  │
+                    │  Antarctica/McMurdo              ?  │
+                    │  Antarctica/Palmer               ?  │
+                    │  Antarctica/Rothera              ?  │
+                    │  Antarctica/Syowa                ?  │
+                    │  Antarctica/Vostok               ?  │
+                    │  Arctic/Longyearbyen             ?  │
+                    │  Asia/Aden                       ?  │
+                    │  Asia/Almaty                     ?  │
+                    │  Asia/Amman                      ?  │
+                    │  Asia/Anadyr                     ?  │
+                    │  Asia/Aqtau                      ?  │
+                    │  Asia/Aqtobe                     ?  │
+                    │  Asia/Ashgabat                   ?  │
+                    │  Asia/Baghdad                    ?  │
+                    │  Asia/Bahrain                    ?  │
+                    │  Asia/Bahrain                    ?  │                     
+Welcome to CentOS for x86_64
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+terminating anaconda...done                                                    
+sending termination signals...done
+sending kill signals...done
+disabling swap...
+        /dev/dm-1
+unmounting filesystems...
+        /mnt/runtime done
+        disabling /dev/loop0
+        /dev/pts done
+        /selinux done
+        /mnt/sysimage/boot done
+        /mnt/sysimage/dev/pts done
+        /mnt/sysimage/dev/shm done
+        /mnt/sysimage/dev done
+        /mnt/sysimage/proc/bus/usb done
+        /mnt/sysimage/proc done
+        /mnt/sysimage/sys done
+        /mnt/sysimage/selinux done
+        /mnt/sysimage done
+waiting for mdraid sets to become clean...
+rebooting system
+Restarting system.
+
+Guest installation complete... restarting guest.
+Connected to domain test
+Escape character is ^]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Google, Inc.
+Serial Graphics Adapter 12/07/11
+SGABIOS $Id: sgabios.S 8 2010-04-22 00:03:40Z nlaredo $ (mockbuild@c6b18n1.dev.centos.org) Wed Dec  7 17:04:47 UTC 2011
+Term: 80x38
+4 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SeaBIOS (version seabios-0.6.1.2-28.el6)
+Machine UUID be6b7833-dad1-d4c1-25b1-b219415a8142
+
+
+gPXE (http://etherboot.org) - 00:03.0 C100 PCI2.10 PnP BBS PMM1FE0@10 C100
+                                                                               
+
+
+
+gPXE (http://etherboot.org) - 00:04.0 C180 PCI2.10 PnP BBS PMM1FC0@20 C180
+                                                                               
+
+Booting from Hard Disk...
+Press any key to continue.
+Press any key to continue.
+Press any key to continue.
+Press any key to continue.
+Press any key to continue.
+Press any key to continue.
+Press any key to continue.
+Press any key to continue.
+Press any key to continue.
+Press any key to continue.
+
+
+    GNU GRUB  version 0.97  (630K lower / 523252K upper memory)
+
+ +-------------------------------------------------------------------------+
+ | CentOS (2.6.32-431.el6.x86_64)                                          |  
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |
+ |                                                                         |  
+ +-------------------------------------------------------------------------+
+      Use the ^ and v keys to select which entry is highlighted.
+      Press enter to boot the selected OS, 'e' to edit the
+      commands before booting, 'a' to modify the kernel arguments
+      before booting, or 'c' for a command-line.
+
+   The highlighted entry will be booted automatically in 1 seconds.    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Probing EDD (edd=off to disable)... ok
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Initializing cgroup subsys cpuset
+Initializing cgroup subsys cpu
+Linux version 2.6.32-431.el6.x86_64 (mockbuild@c6b8.bsys.dev.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Fri Nov 22 03:15:09 UTC 2013
+Command line: ro root=/dev/mapper/VolGroup-lv_root rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD rd_LVM_LV=VolGroup/lv_swap console=ttyS0,115200 crashkernel=auto rd_LVM_LV=VolGroup/lv_root SYSFONT=latarcyrheb-sun16  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM
+KERNEL supported cpus:
+  Intel GenuineIntel
+  AMD AuthenticAMD
+  Centaur CentaurHauls
+Disabled fast string operations
+BIOS-provided physical RAM map:
+ BIOS-e820: 0000000000000000 - 000000000009d800 (usable)
+ BIOS-e820: 000000000009d800 - 00000000000a0000 (reserved)
+ BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+ BIOS-e820: 0000000000100000 - 000000001fffd000 (usable)
+ BIOS-e820: 000000001fffd000 - 0000000020000000 (reserved)
+ BIOS-e820: 00000000fffbc000 - 0000000100000000 (reserved)
+DMI 2.4 present.
+SMBIOS version 2.4 @ 0xFDA20
+Hypervisor detected: KVM
+last_pfn = 0x1fffd max_arch_pfn = 0x400000000
+PAT not supported by CPU.
+init_memory_mapping: 0000000000000000-000000001fffd000
+RAMDISK: 1f0a7000 - 1ffec52d
+ACPI: RSDP 00000000000fd9f0 00014 (v00 BOCHS )
+ACPI: RSDT 000000001fffd670 00034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+ACPI: FACP 000000001ffffe40 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+ACPI: DSDT 000000001fffd950 024A2 (v01   BXPC   BXDSDT 00000001 INTL 20090123)
+ACPI: FACS 000000001ffffe00 00040
+ACPI: SSDT 000000001fffd8b0 0009E (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+ACPI: APIC 000000001fffd7c0 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+ACPI: SSDT 000000001fffd6b0 0010F (v01   BXPC BXSSDTPC 00000001 INTL 20090123)
+Setting APIC routing to flat.
+No NUMA configuration found
+Faking a node at 0000000000000000-000000001fffd000
+Bootmem setup node 0 0000000000000000-000000001fffd000
+  NODE_DATA [0000000000009000 - 000000000003cfff]
+  bootmap [000000000003d000 -  0000000000040fff] pages 4
+(7 early reservations) ==> bootmem [0000000000 - 001fffd000]
+  #0 [0000000000 - 0000001000]   BIOS data page ==> [0000000000 - 0000001000]
+  #1 [0000006000 - 0000008000]       TRAMPOLINE ==> [0000006000 - 0000008000]
+  #2 [0001000000 - 000201faa4]    TEXT DATA BSS ==> [0001000000 - 000201faa4]
+  #3 [001f0a7000 - 001ffec52d]          RAMDISK ==> [001f0a7000 - 001ffec52d]
+  #4 [000009d800 - 0000100000]    BIOS reserved ==> [000009d800 - 0000100000]
+  #5 [0002020000 - 0002020081]              BRK ==> [0002020000 - 0002020081]
+  #6 [0000008000 - 0000009000]          PGTABLE ==> [0000008000 - 0000009000]
+found SMP MP-table at [ffff8800000fda40] fda40
+crashkernel=auto resulted in zero bytes of reserved memory.
+kvm-clock: Using msrs 4b564d01 and 4b564d00
+kvm-clock: cpu 0, msr 0:1c247c1, boot clock
+Zone PFN ranges:
+  DMA      0x00000001 -> 0x00001000
+  DMA32    0x00001000 -> 0x00100000
+  Normal   0x00100000 -> 0x00100000
+Movable zone start PFN for each node
+early_node_map[2] active PFN ranges
+    0: 0x00000001 -> 0x0000009d
+    0: 0x00000100 -> 0x0001fffd
+ACPI: PM-Timer IO Port: 0xb008
+Setting APIC routing to flat.
+ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Using ACPI (MADT) for SMP configuration information
+SMP: Allowing 1 CPUs, 0 hotplug CPUs
+PM: Registered nosave memory: 000000000009d000 - 000000000009e000
+PM: Registered nosave memory: 000000000009e000 - 00000000000a0000
+PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+Allocating PCI resources starting at 20000000 (gap: 20000000:dffbc000)
+Booting paravirtualized kernel on KVM
+NR_CPUS:4096 nr_cpumask_bits:1 nr_cpu_ids:1 nr_node_ids:1
+PERCPU: Embedded 31 pages/cpu @ffff880002200000 s94872 r8192 d23912 u2097152
+pcpu-alloc: s94872 r8192 d23912 u2097152 alloc=1*2097152
+pcpu-alloc: [0] 0 
+kvm-clock: cpu 0, msr 0:22167c1, primary cpu clock
+kvm-stealtime: cpu 0, msr 220e880
+Built 1 zonelists in Node order, mobility grouping on.  Total pages: 129075
+Policy zone: DMA32
+Kernel command line: ro root=/dev/mapper/VolGroup-lv_root rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD rd_LVM_LV=VolGroup/lv_swap console=ttyS0,115200  rd_LVM_LV=VolGroup/lv_root SYSFONT=latarcyrheb-sun16  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM
+PID hash table entries: 2048 (order: 2, 16384 bytes)
+Checking aperture...
+No AGP bridge found
+Memory: 482920k/524276k available (5325k kernel code, 400k absent, 40956k reserved, 7013k data, 1276k init)
+Hierarchical RCU implementation.
+NR_IRQS:33024 nr_irqs:256
+Console: colour dummy device 80x25
+console [ttyS0] enabled
+allocated 2097152 bytes of page_cgroup
+please try 'cgroup_disable=memory' option if you don't want memory cgroups
+Detected 2494.274 MHz processor.
+Calibrating delay loop (skipped) preset value.. 4988.54 BogoMIPS (lpj=2494274)
+pid_max: default: 32768 minimum: 301
+Security Framework initialized
+SELinux:  Initializing.
+Dentry cache hash table entries: 65536 (order: 7, 524288 bytes)
+Inode-cache hash table entries: 32768 (order: 6, 262144 bytes)
+Mount-cache hash table entries: 256
+Initializing cgroup subsys ns
+Initializing cgroup subsys cpuacct
+Initializing cgroup subsys memory
+Initializing cgroup subsys devices
+Initializing cgroup subsys freezer
+Initializing cgroup subsys net_cls
+Initializing cgroup subsys blkio
+Initializing cgroup subsys perf_event
+Initializing cgroup subsys net_prio
+Disabled fast string operations
+mce: CPU supports 10 MCE banks
+alternatives: switching to unfair spinlock
+SMP alternatives: switching to UP code
+Freeing SMP alternatives: 36k freed
+ACPI: Core revision 20090903
+ftrace: converting mcount calls to 0f 1f 44 00 00
+ftrace: allocating 21769 entries in 86 pages
+APIC routing finalized to flat.
+------------[ cut here ]------------
+WARNING: at arch/x86/kernel/apic/apic.c:1324 setup_local_APIC+0x189/0x290() (Not tainted)
+Hardware name: KVM
+Modules linked in:
+Pid: 1, comm: swapper Not tainted 2.6.32-431.el6.x86_64 #1
+Call Trace:
+ [<ffffffff81071e27>] ? warn_slowpath_common+0x87/0xc0
+ [<ffffffff81071e7a>] ? warn_slowpath_null+0x1a/0x20
+ [<ffffffff815216b8>] ? setup_local_APIC+0x189/0x290
+ [<ffffffff81c36325>] ? native_smp_prepare_cpus+0x2c6/0x397
+ [<ffffffff81c26754>] ? kernel_init+0x10b/0x2f7
+ [<ffffffff8100c20a>] ? child_rip+0xa/0x20
+ [<ffffffff81c26649>] ? kernel_init+0x0/0x2f7
+ [<ffffffff8100c200>] ? child_rip+0x0/0x20
+---[ end trace a7919e7f17c0a725 ]---
+..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+CPU0: Intel QEMU Virtual CPU version (cpu64-rhel6) stepping 03
+APIC calibration not consistent with PM-Timer: 182ms instead of 100ms
+APIC delta adjusted to PM-Timer: 6249022 (11401724)
+Performance Events: Broken PMU hardware detected, using software events only.
+NMI watchdog disabled (cpu0): hardware events not enabled
+Brought up 1 CPUs
+Total of 1 processors activated (4988.54 BogoMIPS).
+devtmpfs: initialized
+regulator: core version 0.5
+NET: Registered protocol family 16
+ACPI: bus type pci registered
+PCI: Using configuration type 1 for base access
+bio: create slab <bio-0> at 0
+ACPI: Interpreter enabled
+ACPI: (supports S0 S5)
+ACPI: Using IOAPIC for interrupt routing
+ACPI: No dock devices found.
+PCI: Ignoring host bridge windows from ACPI; if necessary, use "pci=use_crs" and report a bug
+ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+PCI host bridge to bus 0000:00
+pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+pci_bus 0000:00: root bus resource [mem 0x00000000-0xffffffffff]
+pci 0000:00:01.3: quirk: [io  0xb000-0xb03f] claimed by PIIX4 ACPI
+pci 0000:00:01.3: quirk: [io  0xb100-0xb10f] claimed by PIIX4 SMB
+ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+ACPI: PCI Interrupt Link [LNKS] (IRQs *9)
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+PCI: Using ACPI for IRQ routing
+lo: Dropping TSO features since no CSUM feature.
+NetLabel: Initializing
+NetLabel:  domain hash size = 128
+NetLabel:  protocols = UNLABELED CIPSOv4
+NetLabel:  unlabeled traffic allowed by default
+Switching to clocksource kvm-clock
+pnp: PnP ACPI init
+ACPI: bus type pnp registered
+pnp: PnP ACPI: found 6 devices
+ACPI: ACPI bus type pnp unregistered
+NET: Registered protocol family 2
+IP route cache hash table entries: 4096 (order: 3, 32768 bytes)
+TCP established hash table entries: 16384 (order: 6, 262144 bytes)
+TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+TCP: Hash tables configured (established 16384 bind 16384)
+TCP reno registered
+NET: Registered protocol family 1
+pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+pci 0000:00:01.0: PIIX3: Enabling Passive Release
+pci 0000:00:01.0: Activating ISA DMA hang workarounds
+ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+pci 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+pci 0000:00:01.2: PCI INT D disabled
+Trying to unpack rootfs image as initramfs...
+Freeing initrd memory: 15637k freed
+audit: initializing netlink socket (disabled)
+type=2000 audit(1511869755.558:1): initialized
+HugeTLB registered 2 MB page size, pre-allocated 0 pages
+VFS: Disk quotas dquot_6.5.2
+Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+msgmni has been set to 973
+alg: No test for stdrng (krng)
+ksign: Installing public key data
+Loading keyring
+- Added public key 8A44323FB303E068
+- User ID: CentOS (Kernel Module GPG key)
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+io scheduler noop registered
+io scheduler anticipatory registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+acpiphp: Slot [1] registered
+acpiphp: Slot [2] registered
+acpiphp: Slot [3] registered
+acpiphp: Slot [4] registered
+acpiphp: Slot [5] registered
+acpiphp: Slot [6] registered
+acpiphp: Slot [7] registered
+acpiphp: Slot [8] registered
+acpiphp: Slot [9] registered
+acpiphp: Slot [10] registered
+acpiphp: Slot [11] registered
+acpiphp: Slot [12] registered
+acpiphp: Slot [13] registered
+acpiphp: Slot [14] registered
+acpiphp: Slot [15] registered
+acpiphp: Slot [16] registered
+acpiphp: Slot [17] registered
+acpiphp: Slot [18] registered
+acpiphp: Slot [19] registered
+acpiphp: Slot [20] registered
+acpiphp: Slot [21] registered
+acpiphp: Slot [22] registered
+acpiphp: Slot [23] registered
+acpiphp: Slot [24] registered
+acpiphp: Slot [25] registered
+acpiphp: Slot [26] registered
+acpiphp: Slot [27] registered
+acpiphp: Slot [28] registered
+acpiphp: Slot [29] registered
+acpiphp: Slot [30] registered
+acpiphp: Slot [31] registered
+ipmi message handler version 39.2
+IPMI System Interface driver.
+ipmi_si: Adding default-specified kcs state machine
+ipmi_si: Trying default-specified kcs state machine at i/o address 0xca2, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Adding default-specified smic state machine
+ipmi_si: Trying default-specified smic state machine at i/o address 0xca9, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Adding default-specified bt state machine
+ipmi_si: Trying default-specified bt state machine at i/o address 0xe4, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Unable to find any System Interface(s)
+input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+ACPI: Power Button [PWRF]
+ACPI Exception: AE_NOT_FOUND, No or invalid critical threshold (20090903/thermal-386)
+GHES: HEST is not enabled!
+Non-volatile memory driver v1.3
+Linux agpgart interface v0.103
+crash memory driver: version 1.1
+Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+ial8250: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+00:05: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+brd: module loaded
+loop: module loaded
+input: Macintosh mouse button emulation as /devices/virtual/input/input1
+Fixed MDIO Bus: probed
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+uhci_hcd: USB Universal Host Controller Interface driver
+uhci_hcd 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+uhci_hcd 0000:00:01.2: UHCI Host Controller
+uhci_hcd 0000:00:01.2: new USB bus registered, assigned bus number 1
+uhci_hcd 0000:00:01.2: irq 11, io base 0x0000c020
+usb usb1: New USB device found, idVendor=1d6b, idProduct=0001
+usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb1: Product: UHCI Host Controller
+usb usb1: Manufacturer: Linux 2.6.32-431.el6.x86_64 uhci_hcd
+usb usb1: SerialNumber: 0000:00:01.2
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 2 ports detected
+PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+serio: i8042 KBD port at 0x60,0x64 irq 1
+serio: i8042 AUX port at 0x60,0x64 irq 12
+mice: PS/2 mouse device common for all mice
+rtc_cmos 00:01: RTC can wake from S4
+input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input2
+usb 1-1: new full speed USB device number 2 using uhci_hcd
+rtc_cmos 00:01: rtc core: registered rtc_cmos as rtc0
+rtc0: alarms up to one day, 114 bytes nvram
+cpuidle: using governor ladder
+cpuidle: using governor menu
+EFI Variables Facility v0.08 2004-May-17
+usb 1-1: New USB device found, idVendor=0627, idProduct=0001
+usb 1-1: New USB device strings: Mfr=1, Product=3, SerialNumber=5
+usb 1-1: Product: QEMU USB Tablet
+usb 1-1: Manufacturer: QEMU 0.12.1
+usb 1-1: SerialNumber: 42
+usbcore: registered new interface driver hiddev
+usbcore: registered new interface driver usbhid
+usbhid: v2.6:USB HID core driver
+usb 1-1: configuration #1 chosen from 1 choice
+GRE over IPv4 demultiplexor driver
+TCP cubic registered
+Initializing XFRM netlink socket
+NET: Registered protocol family 17
+input: QEMU 0.12.1 QEMU USB Tablet as /devices/pci0000:00/0000:00:01.2/usb1/1-1/1-1:1.0/input/input3
+registered taskstats version 1
+rtc_cmos 00:01: setting system clock to 2017-11-28 11:50:45 UTC (1511869845)
+generic-usb 0003:0627:0001.0001: input,hidraw0: USB HID v0.01 Pointer [QEMU 0.12.1 QEMU USB Tablet] on usb-0000:00:01.2-1/input0
+Initalizing network drop monitor service
+Freeing unused kernel memory: 1276k freed
+Write protecting the kernel read-only data: 10240k
+Freeing unused kernel memory: 800k freed
+Freeing unused kernel memory: 1588k freed
+dracut: dracut-004-335.el6
+input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input4
+device-mapper: uevent: version 1.0.3
+device-mapper: ioctl: 4.24.6-ioctl (2013-01-15) initialised: dm-devel@redhat.com
+udev: starting version 147
+dracut: Starting plymouth daemon
+scsi0 : ata_piix
+scsi1 : ata_piix
+ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc000 irq 14
+ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc008 irq 15
+ata2.00: ATAPI: QEMU DVD-ROM, 0.12.1, max UDMA/100
+ata2.00: configured for MWDMA2
+scsi 1:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     0.12 PQ: 0 ANSI: 5
+ACPI: PCI Interrupt Link [LNKC] enabled at IRQ 10
+virtio-pci 0000:00:03.0: PCI INT A -> Link[LNKC] -> GSI 10 (level, high) -> IRQ 10
+virtio-pci 0000:00:04.0: PCI INT A -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+ACPI: PCI Interrupt Link [LNKA] enabled at IRQ 10
+virtio-pci 0000:00:05.0: PCI INT A -> Link[LNKA] -> GSI 10 (level, high) -> IRQ 10
+ACPI: PCI Interrupt Link [LNKB] enabled at IRQ 11
+virtio-pci 0000:00:06.0: PCI INT A -> Link[LNKB] -> GSI 11 (level, high) -> IRQ 11
+Gsr0: scsi3-mmc drive: 4x/4x xa/form2 tray
+Uniform CD-ROM driver Revision: 3.20
+ vda: vda1 vda2
+dracut: Scanning devices vda2  for LVM logical volumes VolGroup/lv_swap VolGroup/lv_root 
+dracut: inactive '/dev/VolGroup/lv_root' [6.71 GiB] inherit
+dracut: inactive '/dev/VolGroup/lv_swap' [816.00 MiB] inherit
+EXT4-fs (dm-0): mounted filesystem with ordered data mode. Opts: 
+dracut: Mounted root filesystem /dev/mapper/VolGroup-lv_root
+dracut: Loading SELinux policy
+type=1404 audit(1511869856.301:2): enforcing=1 old_enforcing=0 auid=4294967295 ses=4294967295
+type=1403 audit(1511869858.570:3): policy loaded auid=4294967295 ses=4294967295
+dracut: 
+dracut: Switching root
+                Welcome to CentOS 
+Starting udev: udev: starting version 147
+sr 1:0:0:0: Attached scsi generic sg0 type 5
+piix4_smbus 0000:00:01.3: SMBus Host Controller at 0xb100, revision 0
+G[  OK  ]
+Setting hostname localhost.localdomain:  [  OK  ]
+Setting up Logical Volume Management:   2 logical volume(s) in volume group "VolGroup" now active
+[  OK  ]
+Checking filesystems
+Checking all file systems.
+[/sbin/fsck.ext4 (1) -- /] fsck.ext4 -a /dev/mapper/VolGroup-lv_root 
+/dev/mapper/VolGroup-lv_root: clean, 18406/440640 files, 214786/1759232 blocks
+[/sbin/fsck.ext4 (1) -- /boot] fsck.ext4 -a /dev/vda1 
+/dev/vda1: clean, 38/128016 files, 49603/512000 blocks
+[  OK  ]
+Remounting root filesystem in read-write mode:  [  OK  ]
+Mounting local filesystems:  EXT4-fs (vda1): mounted filesystem with ordered data mode. Opts: 
+[  OK  ]
+Enabling /etc/fstab swaps:  Adding 835576k swap on /dev/mapper/VolGroup-lv_swap.  Priority:-1 extents:1 across:835576k 
+[  OK  ]
+Entering non-interactive startup
+Starting monitoring for VG VolGroup:   2 logical volume(s) in volume group "VolGroup" monitored
+[  OK  ]
+ip6tables: Applying firewall rules: NET: Registered protocol family 10
+lo: Disabled Privacy Extensions
+ip6_tables: (C) 2000-2006 Netfilter Core Team
+nf_conntrack version 0.5.0 (3923 buckets, 15692 max)
+[  OK  ]
+iptables: Applying firewall rules: ip_tables: (C) 2000-2006 Netfilter Core Team
+[  OK  ]
+Bringing up loopback interface:  [  OK  ]
+Starting auditd: [  OK  ]
+Starting system logger: [  OK  ]
+Mounting filesystems:  [  OK  ]
+Retrigger failed udev events[  OK  ]
+Adding udev persistent rules[  OK  ]
+Generating SSH1 RSA host key: [  OK  ]
+Generating SSH2 RSA host key: [  OK  ]
+Generating SSH2 DSA host key: [  OK  ]
+Starting sshd: [  OK  ]
+Starting postfix: [  OK  ]
+Starting crond: [  OK  ]
+
+CentOS release 6.5 (Final)
+Kernel 2.6.32-431.el6.x86_64 on an x86_64
+
+localhost.localdomain login: root
+Password: 
+[root@localhost ~]# ifconfig 
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+[root@localhost ~]# 

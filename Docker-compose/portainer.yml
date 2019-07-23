@@ -1,0 +1,15 @@
+version: '3'
+services:
+  portainer:
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+    command: "-H unix:///var/run/docker.sock"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/data/docker/portainer/data:/data"
+      - "/home/web/Portainer/js:/public/js"
+    deploy:
+      replicas: 1   # deploy 的 mode 为 replicated 时, 指定容器副本的数量
+      restart_policy:           # 定义容器重启策略, 用于代替 restart 参数
+        condition: none   #on-failure 只有当容器内部应用程序出现问题才会重启

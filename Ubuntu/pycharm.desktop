@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyCharm
+Icon=/opt/pycharm-2018.3.7/bin/pycharm.png    #此处的路径根据自己情况修改
+Exec="/opt/pycharm-2018.3.7/bin/pycharm.sh" %f   #此处的路径根据自己情况修改
+Comment=The Drive to Develop
+Categories=Development;IDE;
+Terminal=false Startup
+WMClass=jetbrains-pycharm
